@@ -54,6 +54,12 @@ public class Menu {
         System.out.println(text);
     }
 
+    public void writeMessage(String text) {
+        System.out.println(text);
+        try {
+            Thread.sleep(1000);
+        }catch(Exception ex) {}
+    }
 
     public int inputInt(String question) {
         if (question != null && !question.isEmpty()) {
@@ -70,5 +76,12 @@ public class Menu {
             }
         }
         return input;
+    }
+
+    public String inputString(String question) {
+        if (question != null && !question.isEmpty()) {
+            write(question);
+        }
+        return scanner.nextLine();
     }
 }

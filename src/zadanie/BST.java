@@ -45,7 +45,7 @@ public abstract class BST<T> implements Comparator<T> {
                 return;
             }
 
-            throw new bstException("Element istnieje już w drzewie!!!");
+            throw new bstException("Element " + data + " istnieje już w drzewie!!!");
         }
 
         public void insert(T data) throws bstException{
@@ -93,12 +93,14 @@ public abstract class BST<T> implements Comparator<T> {
             root = delete(data,root);
         }
 
-        private void printKLP(Node node){
+        private String printKLP(Node node){
+            String s = "";
             if(node!=null)
-                System.out.println(node.data + ", ");
-            if(node.left!=null) printKLP(node.left);
-            if(node.right!=null) printKLP(node.right);
-        }
+                s = node.data + ", ";
+            if(node.left!=null) s += printKLP(node.left);
+            if(node.right!=null) s += printKLP(node.right);
+        return s;
+    }
 
         private Node search(T data, Node node){
             if(node == null) return null;
@@ -113,8 +115,8 @@ public abstract class BST<T> implements Comparator<T> {
         public Node search (T data){
             return search(data, root);
         }
-        public void printKLP(){
-            printKLP(root);
+        public String printKLP(){
+            return printKLP(root);
         }
 
     }

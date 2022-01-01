@@ -82,27 +82,29 @@ public class Dictionary {
         }
     }
 
-    private void printKLP( dictNode node){
+    private String printKLP( dictNode node){
+            String s = "";
             if (node != null)
-                System.out.println(node.data + ", " + node.Equivalent.data);
-            if (node.left != null) printKLP(node.left);
-            if (node.right != null) printKLP(node.right);
-
+                s+= node.data + " " + node.Equivalent.data + "\n";
+            if (node.left != null) s += printKLP(node.left);
+            if (node.right != null) s += printKLP(node.right);
+            return s;
     }
 
-    private void printLKP( dictNode node){
-        if (node.left != null) printKLP(node.left);
+    private String printLKP( dictNode node){
+        String s = "";
+        if (node.left != null) s += printLKP(node.left);
         if (node != null)
-            System.out.println(node.data + ", " + node.Equivalent.data);
-        if (node.right != null) printKLP(node.right);
-
+            s += node.data + " " + node.Equivalent.data + "\n";
+        if (node.right != null) s+=printLKP(node.right);
+        return s;
     }
 
-    public void print(int lang) throws DictionaryException {
+    public String print(int lang) throws DictionaryException {
         if(lang == LANG_PL)
-            printLKP(pl.root);
+            return printKLP(pl.root);
         else if(lang == LANG_ENG)
-            printLKP(eng.root);
+            return printKLP(eng.root);
         else
             throw new DictionaryException("Nieznany język");
     }
