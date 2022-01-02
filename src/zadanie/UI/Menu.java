@@ -12,24 +12,24 @@ public class Menu {
     public Menu() {
     }
 
-    public void run(){
+    public void run() {
         String input;
         boolean ended = false;
 
-        while(!ended){
+        while (!ended) {
             printMenu();
             input = scanner.nextLine();
-            if(input.equals(QUIT_KEY))
+            if (input.equals(QUIT_KEY))
                 ended = true;
-            else if(!performOption(input))
+            else if (!performOption(input))
                 System.out.println(UNKNOWN_OPTION);
         }
 
     }
 
-    public boolean performOption(String key){
-        for (MenuOption option:menuList){
-            if (option.getKey().equals(key)){
+    public boolean performOption(String key) {
+        for (MenuOption option : menuList) {
+            if (option.getKey().equals(key)) {
                 option.onPerform();
                 return true;
             }
@@ -37,16 +37,16 @@ public class Menu {
         return false;
     }
 
-    public void printMenu(){
+    public void printMenu() {
         System.out.println(">> MENU <<");
 
-        for(MenuOption mo: menuList)
+        for (MenuOption mo : menuList)
             System.out.println(mo);
 
-        System.out.println("Aby zakończyć naciśnij "+ QUIT_KEY);
+        System.out.println("Aby zakończyć naciśnij " + QUIT_KEY);
     }
 
-    public void add(MenuOption option){
+    public void add(MenuOption option) {
         menuList.add(option);
     }
 
@@ -58,7 +58,8 @@ public class Menu {
         System.out.println(text);
         try {
             Thread.sleep(1000);
-        }catch(Exception ex) {}
+        } catch (Exception ex) {
+        }
     }
 
     public int inputInt(String question) {
@@ -67,7 +68,7 @@ public class Menu {
         }
         int input = 0;
         boolean isValid = false;
-        while(!isValid) {
+        while (!isValid) {
             try {
                 input = Integer.parseInt(scanner.nextLine());
                 isValid = true;

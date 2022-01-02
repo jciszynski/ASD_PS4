@@ -1,4 +1,4 @@
-package zadanie;
+package zadanie.Dictionary;
 
 
 import java.util.Comparator;

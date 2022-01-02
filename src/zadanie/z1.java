@@ -1,5 +1,7 @@
 package zadanie;
 
+import zadanie.BST.BST;
+import zadanie.BST.bstException;
 import zadanie.UI.Menu;
 import zadanie.UI.MenuOption;
 
@@ -10,9 +12,9 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class z1 {
+
+
     public static void main(String[] args) throws FileNotFoundException {
-
-
         BST drzewo = new BST<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
@@ -21,7 +23,6 @@ public class z1 {
         };
 
         Menu menu = new Menu();
-
 
         menu.add(new MenuOption("Dodaj element do drzewa","1") {
             @Override
@@ -103,6 +104,7 @@ public class z1 {
                 }
             }
         });
+
         menu.run();
 
     }
