@@ -76,11 +76,8 @@ public abstract class dictBST<T> implements Comparator<T> {
             tmp = tmp.right;
         }
 
+        delete((T)tmp.data,tmpParent);
         node.data = tmp.data;
-        if(tmpParent != node)
-            tmpParent.right = null;
-        else
-            tmpParent.left = null;
 
         return node;
     }
